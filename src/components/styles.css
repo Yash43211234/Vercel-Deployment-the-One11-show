@@ -23,15 +23,12 @@ h1, h2, h3 {
 
 .btn, button {
   background-color: var(--primary-red);
-  
-  align-items: center;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  height: 20px;
   transition: background 0.3s ease, color 0.3s ease;
   text-decoration: none;
   margin-top: 10px;
@@ -44,7 +41,7 @@ h1, h2, h3 {
 }
 
 .hero {
- 
+   background: var(--primary-pink);
   color: #fff;
   text-align: center;
   padding: 5rem 2rem;
@@ -262,6 +259,9 @@ footer {
 
 }
 @media (min-width: 769px) {
+  .about,
+  .form-section,
+  .gallery-section,
   .hero {
     padding-left: 140px; /* Slightly more than .side-image width */
     padding-right: 140px;
@@ -270,31 +270,68 @@ footer {
 
 }
 
-.nav-buttons {
-  background: var(--primary-pink);
-  height: 200px;
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+.buttton-link {
   display: flex;
-  justify-content: center; /* centers content horizontally */
-  align-items: center; 
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.buttton-link .bn {
+  background-color: var(--primary-red);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
 }
 
 
-.nav-buttons {
-  flex: 1;
+
+.hero p {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+  color:white;
 }
 
+.hero a.bn {
+  background-color: var(--primary-red);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
+}
 
+.hero a.bn:hover {
+  background-color: #1e7e34;
+}
+
+/* Responsive styles */
 @media (max-width: 600px) {
-
-  .nav-buttons {
-    flex: none;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0.8rem;
+  .buttton-link {
+    flex-direction: column;
+    gap: 1rem;
   }
-  .nav-buttons {
-    justify-content: center;
-    gap: 0.5rem;
+
+  .hero p {
+    font-size: 1.5rem;
   }
 }

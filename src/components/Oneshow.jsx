@@ -117,12 +117,15 @@ const Oneshow = () => {
       </div>
 
       {/* Hero Section */}
-    <div className="nav-buttons">
-         <Link to="/gallery" className="btn">Gallery</Link>
-        <Link to="/" className="btn">Register</Link>
-        <Link to="/about" className="btn">About</Link>
+      <section className="hero">
+         <div className="buttton-link">
+        <Link to="/about" className="bn">About</Link>
+        <Link to="/" className="bn">Register</Link>
+        <Link to="/gallery" className="bn">Gallery</Link>
       </div>
-
+        <p>AN ARTIST LAUNCHPAD</p>
+        <a href="#register" className="bn">Register Now</a>
+      </section>
 
       {/* About Section */}
       <section id="about" className="about">

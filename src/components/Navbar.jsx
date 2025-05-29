@@ -10,11 +10,15 @@ function Navbar() {
         <img src="/one_11_black.png" alt="Logo" />
       </div>
 
-        <section className="heroo">
-        <h1>Welcome to The One 11 Show</h1>
-        <p>AN ARTIST LAUNCHPAD</p>
-        <a href="#register" className="btn">Register Now</a>
-      </section>
+      {/* <div className="nav-buttons">
+        <Link to="/about" className="btn">About</Link>
+        <Link to="/" className="btn">Register</Link>
+        <Link to="/gallery" className="btn">Gallery</Link>
+      </div> */}
+
+      <div className='nav-heading'>
+         <h1>Welcome to The One11 Show</h1>
+      </div>
 
       <div className="right-space"></div>
     </div>

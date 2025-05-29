@@ -5,9 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem;
+  padding:  20px;
   background: linear-gradient(135deg, var(--primary-red), var(--primary-pink));
-
+ 
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -50,52 +50,6 @@
 }
 
 
-.heroo {
-
-  color: #fff;
-  text-align: center;
-  padding: 1rem 1rem;
-  direction: flex;
-  gap:20px;
+.nav-heading {
+    color:white
 }
-
-@media (min-width: 769px) {
-
-  .hero {
-    padding-left: 140px; /* Slightly more than .side-image width */
-    padding-right: 140px;
-  }
-  
-
-}
-
-.btn{
-  background-color: var(--primary-red);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  margin-top: 10px;
-}
-
-
-.btn:hover {
-  background-color: var(--accent-black);
-  color: var(--primary-pink);
-}
-
-.heroo h1 {
-  font-family: var(--font-secondary);
-  font-size: 40px;
-}
-
-.heroo p{
-  font-family: var(--font-secondary);
-  font-size: 20px;
-  margin-bottom: 10%;
-}
-
