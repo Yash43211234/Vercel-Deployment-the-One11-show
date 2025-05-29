@@ -1,0 +1,25 @@
+{
+  "short_name": "theOne11 Show",
+  "name": "Create theOne11 Show",
+  "icons": [
+    {
+      "src": "creatous_collective_media_log.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "creatous_collective_media_log.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "creatous_collective_media_log.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
