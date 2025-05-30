@@ -277,34 +277,16 @@ footer {
   color: #333;
 }
 
-.buttton-link {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
 
-.buttton-link .bn {
-  background-color: var(--primary-red);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  margin-top: 10px;
-}
 
 
 
 .hero p {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin: 1.5rem 0;
+  
   color:white;
+  margin-bottom: 40px;
 }
 
 .hero a.bn {
@@ -332,6 +314,6 @@ footer {
   }
 
   .hero p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }

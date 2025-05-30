@@ -118,12 +118,7 @@ const Oneshow = () => {
 
       {/* Hero Section */}
       <section className="hero">
-         <div className="buttton-link">
-       <Link to="/gallery" className="bn">Gallery</Link>
-        <Link to="/" className="bn">Register</Link>
        
-          <Link to="/about" className="bn">About</Link>
-      </div>
         <p>AN ARTIST LAUNCHPAD</p>
         <a href="#register" className="bn">Register Now</a>
       </section>
@@ -132,8 +127,8 @@ const Oneshow = () => {
       <section id="about" className="about">
         <h2>About the Show</h2>
         <p>
-          Welcome to The One 11 Show, an artist launch platform brought to you by The
-          Chordifiers Studio and a proud brand of Creatous Collective Private Limited.
+          Welcome to The One11 Show, an artist launch platform brought to you by The
+          Chordifiers Studio.
         </p>
       </section>
 

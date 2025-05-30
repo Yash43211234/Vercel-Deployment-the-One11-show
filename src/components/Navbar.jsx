@@ -18,6 +18,12 @@ function Navbar() {
 
       <div className='nav-heading'>
          <h1>Welcome to The One11 Show</h1>
+           <div className="buttton-link">
+          <Link to="/gallery" className="bn">Gallery</Link>
+        <a href="#register" className="bn">Register</a>
+       
+          <Link to="/about" className="bn">About</Link>
+      </div>
       </div>
 
       <div className="right-space"></div>
