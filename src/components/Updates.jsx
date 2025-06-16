@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const cardData = [
     {
         title: 'Battle of Bands',
@@ -30,6 +31,8 @@ const cardData = [
 
 const Updates = () => {
     const [popupImage, setPopupImage] = useState(null);
+
+    
 
     return (
         <div>
