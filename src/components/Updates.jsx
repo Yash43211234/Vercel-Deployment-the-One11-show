@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const cardData = [
     {
@@ -10,7 +10,7 @@ const cardData = [
     },
     {
         title: 'Battle of Singers Song writers',
-        description: 'Original voices and lyrical stories come alive as singer-songwriters compete with passion and creativity.',
+        description: 'Original voices and lyrical stories come alive as singer-songwriters compete with creativity.',
 
         link: '/Results/musicians.png'
     },
@@ -31,41 +31,34 @@ const cardData = [
 
 const Updates = () => {
     const [popupImage, setPopupImage] = useState(null);
-
+    const navigate = useNavigate();
     
 
     return (
-        <div>
-
-            <h1 style={{
-                textAlign: 'center',
-                margin: '20px auto',
-                color: '#111',
-                fontSize: '28px',
-                fontWeight: '700',
-                background: '#fff',
-                borderRadius: '12px',
-                padding: '12px 20px',
-                width: 'fit-content',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                fontFamily: 'Arial, sans-serif'
-            }}>
+          <div>
+            <h1 style={styles.heading}>
                 Shortlisted Candidates for Round 1A Are Out!
             </h1>
-
 
             <div style={styles.container}>
                 {cardData.map((card, index) => (
                     <div key={index} style={styles.card}>
-
                         <div style={styles.content}>
                             <h2 style={styles.title}>{card.title}</h2>
                             <p style={styles.description}>{card.description}</p>
+
                             <button
                                 style={styles.button}
                                 onClick={() => setPopupImage(card.link)}
                             >
                                 View
+                            </button>
+
+                            <button
+                                style={styles.button}
+                                onClick={() => navigate('/payment-instructions')}
+                            >
+                                Proceed
                             </button>
                         </div>
                     </div>
@@ -73,25 +66,17 @@ const Updates = () => {
             </div>
 
             {/* Modal Popup */}
-            {/* Modal Popup */}
             {popupImage && (
                 <div style={styles.popupOverlay} onClick={() => setPopupImage(null)}>
                     <div style={styles.popupContent} onClick={(e) => e.stopPropagation()}>
                         <img src={popupImage} alt="Popup" style={styles.popupImage} />
                         <button style={styles.closeButton} onClick={() => setPopupImage(null)}>×</button>
-
-                        {/* Download Button */}
-                        <a
-                            href={popupImage}
-                            download
-                            style={styles.downloadButton}
-                        >
+                        <a href={popupImage} download style={styles.downloadButton}>
                             ⬇ Download
                         </a>
                     </div>
                 </div>
             )}
-
         </div>
     );
 };

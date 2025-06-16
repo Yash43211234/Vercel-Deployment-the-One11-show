@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import InfoSection from './components/InfoSection';
 import DevelopmentNotice from './components/DevelopmentNotice';import ResultOut from './components/Updates';
 import Updates from './components/Updates';
+import PaymentInstructions from './components/PaymentInstructions ';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/updates" element={<Updates />} />
+        <Route path="/payment-instructions" element={<PaymentInstructions />} />
       </Routes>
       <InfoSection/>
        <Footer/>
