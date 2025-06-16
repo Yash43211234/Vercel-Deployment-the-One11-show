@@ -120,20 +120,56 @@ const Oneshow = () => {
       <section className="hero">
        
         <p>AN ARTIST LAUNCHPAD</p>
-        <a href="#register" className="bn">Register Now</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfupbs5PK-pm7peJRzxmEBVlUkRKy0yJEZHe2zbn6mFHmJi7Q/viewform?usp=header" className="bn" target="_blank">Register Now</a>
       </section>
 
       {/* About Section */}
-      <section id="about" className="about">
-        <h2>About the Show</h2>
-        <p>
-          Welcome to The One11 Show, an artist launch platform brought to you by The
-          Chordifiers Studio.
-        </p>
-      </section>
+     <section
+  id="about"
+  className="about"
+  style={{
+    padding: '40px 20px',
+    maxWidth: '900px',
+    margin: '0 auto',
+    fontFamily: 'Arial, sans-serif',
+    lineHeight: '1.6',
+    color: '#333',
+  }}
+>
+  <h2
+    style={{
+      textAlign: 'center',
+      fontSize: '32px',
+      marginBottom: '20px',
+      color: '#222',
+    }}
+  >
+    About the Show
+  </h2>
+
+  <p style={{ fontSize: '18px', marginBottom: '20px' }}>
+    Welcome to <strong>The One11 Show</strong>, an artist launch platform brought to you by <strong>The Chordifiers Studio</strong>.
+  </p>
+
+  <p style={{ fontSize: '18px' }}>
+    <strong>Competitions Designed for Every Artist:</strong><br />
+    Whether you're a powerhouse band, a lyrical singer-songwriter, a beat-dropping DJ, a masterful instrumentalist, or a captivating rapper,
+    <strong> The One11 Show</strong> has a competition tailored for you.
+    Dive into exhilarating challenges like:
+  </p>
+
+  <ul style={{ fontSize: '18px', paddingLeft: '20px', marginTop: '20px' }}>
+    <li><strong>Battle of Bands:</strong> Prove your prowess against other incredible groups.</li>
+    <li><strong>Singer Songwriters:</strong> Share your original compositions and heartfelt lyrics.</li>
+    <li><strong>DJs:</strong> Electrify the crowd with your mixes and beats.</li>
+    <li><strong>Musicians:</strong> Showcase your instrumental virtuosity across genres.</li>
+    <li><strong>Rappers:</strong> Deliver your flow and storytelling on the mic.</li>
+  </ul>
+</section>
+
 
       {/* Register Section */}
-      <section id="register" className="form-section">
+      {/* <section id="register" className="form-section">
         <h2>Register Yourself (Free)</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="fullName">Full Name*</label>
@@ -182,15 +218,20 @@ const Oneshow = () => {
 
           <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <input type="checkbox" name="terms" required />
-            I agree to the terms and conditions of One 11
+            I agree to the terms and conditions of the One11 show
           </label>
 
           <button type="submit">Submit</button>
           {submitMessage && <p style={{ marginTop: '10px' }}>{submitMessage}</p>}
         </form>
-      </section>
+      </section> */}
 
       {/* Updates & Contact Sections... (unchanged) */}
+
+      {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <img src="gallery1.jpg" style={{ width: '100%', maxWidth: '800px', height: 'auto' }} />
+</div> */}
+
       
     </div>
   );

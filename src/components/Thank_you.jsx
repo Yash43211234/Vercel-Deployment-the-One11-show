@@ -95,7 +95,7 @@ const Thank_you = () => {
         <p>
           Follow us on Instagram&nbsp;
           <a href="https://instagram.com/chordifiers.studio" target="_blank" rel="noopener noreferrer">
-            <strong>@chordifiers.studio</strong>
+            <strong>@theone11.show</strong>
           </a>{' '}
           for event updates, line-ups, and behind-the-scenes drops!
         </p>

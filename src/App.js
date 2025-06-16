@@ -8,17 +8,23 @@ import About from './Pages/About';
 import Gallery from './Pages/Gallery';
 import Footer from './components/Footer';
 import InfoSection from './components/InfoSection';
+import DevelopmentNotice from './components/DevelopmentNotice';import ResultOut from './components/Updates';
+import Updates from './components/Updates';
 
 function App() {
   return (
     <>
       <Navbar />
+      
+      <DevelopmentNotice/>
+      
 
       <Routes>
         <Route path="/" element={<Oneshow />} />
         <Route path="/submission-successfully" element={<Thank_you />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/updates" element={<Updates />} />
       </Routes>
       <InfoSection/>
        <Footer/>
