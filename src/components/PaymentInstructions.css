@@ -127,3 +127,110 @@ a:hover {
 .copy-button:hover {
   background-color: #444;
 }
+.payment-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+}
+
+.payment-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.payment-section {
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.section-heading {
+    margin-bottom: 12px;
+}
+
+.green { color: #28a745; }
+.blue { color: #007BFF; }
+.purple { color: #6f42c1; }
+.red { color: #dc3545; }
+
+.payment-section ul {
+    padding-left: 20px;
+}
+
+select {
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.copy-button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upi-code {
+    cursor: pointer;
+    color: blue;
+}
+
+.upi-buttons h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.upi-apps {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.upi-button img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    background: #fff;
+    transition: transform 0.2s ease;
+}
+
+.upi-button:hover img {
+    transform: scale(1.05);
+}
+
+.payment-format {
+    background: #f0f0f0;
+    padding: 10px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+    .upi-apps {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .payment-title {
+        font-size: 20px;
+    }
+
+    .payment-section {
+        padding: 15px;
+    }
+}
+

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./PaymentInstructions.css";
+import gpayIcon from "../assets/gpay.png";
+import phonepeIcon from "../assets/phonepe.png";
+import paytmIcon from "../assets/paytm.webp";
 
 const PaymentInstructions = () => {
     const [category, setCategory] = useState("Battle of Rappers");
@@ -12,7 +15,9 @@ const PaymentInstructions = () => {
     };
 
     const amount = categoryFees[category];
-    const upiLink = `upi://pay?pa=one11show@oksbi&pn=One11%20Show&am=${amount}&cu=INR&tn=${encodeURIComponent(category + " Registration")}`;
+    const upiLink = `upi://pay?pa=one11show@oksbi&pn=One11%20Show&am=${amount}&cu=INR&tn=${encodeURIComponent(
+        category + " Registration"
+    )}`;
 
     const copyUPI = () => {
         navigator.clipboard.writeText("one11show@oksbi");
@@ -21,20 +26,23 @@ const PaymentInstructions = () => {
 
     return (
         <div className="payment-container">
-            <h2 className="payment-title">📄 THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS</h2>
+            <h2 className="payment-title">
+                📄 THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS
+            </h2>
 
-            {/* STEP 0 */}
             <div className="payment-section">
-                <h3 className="section-heading green">✅IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
+                <h3 className="section-heading green">✅ IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
                 <p>To confirm your entry, follow these 3 simple steps:</p>
             </div>
 
-            {/* CATEGORY & FEE */}
             <div className="payment-section">
                 <h3 className="section-heading purple">🎵 Participation Fee by Category:</h3>
                 <ul>
                     {Object.entries(categoryFees).map(([cat, fee]) => (
-                        <li key={cat}><strong>{cat}</strong> – ₹{fee.toLocaleString()} per {cat.includes("Band") ? "band" : "artist"}</li>
+                        <li key={cat}>
+                            <strong>{cat}</strong> – ₹{fee.toLocaleString()} per{" "}
+                            {cat.includes("Band") ? "band" : "artist"}
+                        </li>
                     ))}
                 </ul>
 
@@ -46,7 +54,6 @@ const PaymentInstructions = () => {
                 </select>
             </div>
 
-            {/* STEP 1 */}
             <div className="payment-section">
                 <h3 className="section-heading blue">💰 STEP 1: PAY YOUR REGISTRATION FEE</h3>
                 <ul>
@@ -54,9 +61,7 @@ const PaymentInstructions = () => {
                     <li><strong>Amount:</strong> ₹{amount.toLocaleString()}</li>
                     <li>
                         <strong>UPI ID:</strong>{" "}
-                        <code onClick={copyUPI} style={{ cursor: "pointer", color: "blue" }}>
-                            one11show@oksbi
-                        </code>{" "}
+                        <code onClick={copyUPI} className="upi-code">one11show@oksbi</code>{" "}
                         <button className="copy-button" onClick={copyUPI}>Copy</button>
                     </li>
                     <li><strong>Last Date to Pay:</strong> 20 June 2025 (by 11:59 PM)</li>
@@ -65,32 +70,36 @@ const PaymentInstructions = () => {
                 <div className="upi-buttons">
                     <h4>Pay Using:</h4>
                     <div className="upi-apps">
-                        <a href={upiLink} className="upi-button gpay">Google Pay</a>
-                        <a href={upiLink} className="upi-button phonepe">PhonePe</a>
-                        <a href={upiLink} className="upi-button paytm">Paytm</a>
+                        <a href={upiLink} className="upi-button">
+                            <img src={gpayIcon} alt="Google Pay" />
+                        </a>
+                        <a href={upiLink} className="upi-button">
+                            <img src={phonepeIcon} alt="PhonePe" />
+                        </a>
+                        <a href={upiLink} className="upi-button">
+                            <img src={paytmIcon} alt="Paytm" />
+                        </a>
                     </div>
                 </div>
             </div>
 
-            {/* STEP 2 */}
             <div className="payment-section">
                 <h3 className="section-heading blue">📸 STEP 2: TAKE A SCREENSHOT</h3>
                 <p>Take a <strong>clear screenshot</strong> of your payment confirmation.</p>
                 <p>Note the <strong>Transaction ID / UPI Reference Number</strong>.</p>
             </div>
 
-            {/* STEP 3 */}
             <div className="payment-section">
                 <h3 className="section-heading blue">📩 STEP 3: SEND US THE CONFIRMATION</h3>
                 <p>Send the screenshot + following details via <strong>WhatsApp or Instagram DM</strong>:</p>
 
                 <pre className="payment-format">
-                    Full Name: [Your Name]
-                    Registration Code: ONE11-2025-042
-                    Mobile Number: [Your Mobile]
-                    Category: {category}
-                    Transaction ID: [Your UPI/Transaction ID]
-                    Screenshot: [Attach Image]
+Full Name: [Your Name]
+Registration Code: ONE11-2025-042
+Mobile Number: [Your Mobile]
+Category: {category}
+Transaction ID: [Your UPI/Transaction ID]
+Screenshot: [Attach Image]
                 </pre>
 
                 <p>
@@ -99,7 +108,6 @@ const PaymentInstructions = () => {
                 </p>
             </div>
 
-            {/* NOTES */}
             <div className="payment-section">
                 <h3 className="section-heading red">⚠ IMPORTANT NOTES:</h3>
                 <ul>
@@ -110,7 +118,6 @@ const PaymentInstructions = () => {
                 </ul>
             </div>
 
-            {/* HELP */}
             <div className="payment-section">
                 <h3 className="section-heading purple">🤝 NEED HELP?</h3>
                 <p>
