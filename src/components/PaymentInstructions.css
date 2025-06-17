@@ -1,249 +1,176 @@
+/* Base container */
 .payment-container {
   max-width: 800px;
   margin: 40px auto;
-  padding: 40px;
-  background: #fff;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
+/* Titles & Headings */
 .payment-title {
-  font-size: 1.8rem;
-  font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
-  color: #111;
-}
-
-.payment-section {
+  color: #2d2e32;
+  font-size: 28px;
+  font-weight: bold;
   margin-bottom: 30px;
 }
 
 .section-heading {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 20px;
   margin-bottom: 10px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
 }
 
 .section-heading.green {
-  color: #1abc9c;
+  background: #28a745;
 }
 
 .section-heading.blue {
-  color: #3498db;
+  background: #007bff;
 }
 
 .section-heading.red {
-  color: #e74c3c;
+  background: #dc3545;
 }
 
 .section-heading.purple {
-  color: #9b59b6;
-}
-
-ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-code {
-  background: #f0f0f0;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.95rem;
-}
-
-.payment-format {
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  font-family: monospace;
-  font-size: 0.95rem;
-  white-space: pre-wrap;
-  margin: 10px 0;
-  border-left: 4px solid #3498db;
-}
-
-a {
-  color: #2980b9;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-.upi-buttons h4 {
-  margin-top: 10px;
-  font-weight: 600;
-  color: #333;
-}
-
-.upi-apps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.upi-button {
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-.gpay {
-  background-color: #5f6368;
-}
-
-.phonepe {
-  background-color: #5b2dab;
-}
-
-.paytm {
-  background-color: #00baf2;
-}
-
-.upi-button:hover {
-  opacity: 0.85;
-}
-
-.copy-button {
-  margin-left: 8px;
-  padding: 4px 10px;
-  background-color: #222;
-  color: #fff;
-  font-size: 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.copy-button:hover {
-  background-color: #444;
-}
-.payment-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
-}
-
-.payment-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 25px;
+  background: #6f42c1;
 }
 
 .payment-section {
-    background: white;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
 }
 
-.section-heading {
-    margin-bottom: 12px;
-}
-
-.green { color: #28a745; }
-.blue { color: #007BFF; }
-.purple { color: #6f42c1; }
-.red { color: #dc3545; }
-
-.payment-section ul {
-    padding-left: 20px;
-}
-
-select {
-    padding: 8px 12px;
-    margin-top: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+/* UPI Info */
+.upi-code {
+  font-family: monospace;
+  font-size: 16px;
+  background: #f3f3f3;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .copy-button {
-    background: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    border-radius: 4px;
-    cursor: pointer;
+  margin-left: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.upi-code {
-    cursor: pointer;
-    color: blue;
+.copy-button:hover {
+  background: #0056b3;
 }
 
-.upi-buttons h4 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+/* Category Select */
+#category-select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
 }
 
+/* UPI App Icons */
 .upi-apps {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.upi-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .upi-button img {
-    height: 40px;
-    width: auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    padding: 6px;
-    background: #fff;
-    transition: transform 0.2s ease;
+  width: 60px;
+  height: auto;
 }
 
-.upi-button:hover img {
-    transform: scale(1.05);
+.upi-button:hover {
+  transform: scale(1.1);
 }
 
+/* Format Block */
 .payment-format {
-    background: #f0f0f0;
-    padding: 10px;
-    white-space: pre-wrap;
-    font-size: 14px;
-    border-radius: 6px;
-}
-
-@media (max-width: 600px) {
-    .upi-apps {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .payment-title {
-        font-size: 20px;
-    }
-
-    .payment-section {
-        padding: 15px;
-    }
-}
-/* Add this to PaymentInstructions.css */
-.copy-toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  z-index: 1000;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: monospace;
   font-size: 14px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  white-space: pre-wrap;
 }
 
+/* QR Modal */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.qr-content {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.qr-content h3 {
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.qr-content p {
+  margin: 12px 0;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.close-button {
+  margin-top: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #b02a37;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upi-apps {
+    justify-content: center;
+  }
+
+  .qr-modal {
+    display: none !important; /* hide QR on mobile */
+  }
+}

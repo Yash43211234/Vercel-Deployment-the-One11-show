@@ -3,9 +3,11 @@ import "./PaymentInstructions.css";
 import gpayIcon from "../assets/gpay.png";
 import phonepeIcon from "../assets/phonepe.png";
 import paytmIcon from "../assets/paytm.webp";
+import { QRCode } from "react-qrcode-logo"; // ⬅️ Add QR support
 
 const PaymentInstructions = () => {
     const [category, setCategory] = useState("Battle of Rappers");
+    const [showQR, setShowQR] = useState(false);
 
     const categoryFees = {
         "Battle of Bands": 4999,
@@ -15,32 +17,38 @@ const PaymentInstructions = () => {
     };
 
     const amount = categoryFees[category];
-    const upiID = "one11show@oksbi";
-    const upiLink = `upi://pay?pa=${upiID}&pn=One11%20Show&am=${amount}&cu=INR&tn=${encodeURIComponent(`${category} Registration`)}`;
+    const upiID = "7811092672-1@okbizaxis";
+    const upiLink = `upi://pay?pa=${upiID}&pn=Yashwant%20Kumar&am=${amount}&cu=INR&tn=${encodeURIComponent(`${category} Registration`)}`;
 
-    const copyUPI = async () => {
-        try {
-            await navigator.clipboard.writeText(upiID);
-            // non-blocking UX
-            const copiedAlert = document.createElement("div");
-            copiedAlert.innerText = "UPI ID copied!";
-            copiedAlert.className = "copy-toast";
-            document.body.appendChild(copiedAlert);
-            setTimeout(() => document.body.removeChild(copiedAlert), 1500);
-        } catch (err) {
-            alert("Failed to copy UPI ID.");
+    const copyUPI = () => {
+        navigator.clipboard.writeText(upiID);
+        alert("UPI ID copied to clipboard!");
+    };
+
+    const handleUPIClick = () => {
+        if (window.innerWidth > 768) {
+            setShowQR(true); // show popup on desktop
+        } else {
+            window.location.href = upiLink; // mobile - direct UPI call
         }
     };
 
     return (
         <div className="payment-container">
-            <h2 className="payment-title">
-                THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS
-            </h2>
+            <h2 className="payment-title">THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS</h2>
 
             <div className="payment-section">
                 <h3 className="section-heading green">IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
-                <p>To confirm your entry, follow these 3 simple steps:</p>
+                <p>To confirm your entry, follow the steps below:</p>
+            </div>
+
+            <div className="payment-section">
+                <label htmlFor="category-select"><strong>Select Your Category:</strong></label>
+                <select id="category-select" value={category} onChange={(e) => setCategory(e.target.value)}>
+                    {Object.keys(categoryFees).map((cat) => (
+                        <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                </select>
             </div>
 
             <div className="payment-section">
@@ -53,42 +61,33 @@ const PaymentInstructions = () => {
                         <code onClick={copyUPI} className="upi-code">{upiID}</code>{" "}
                         <button className="copy-button" onClick={copyUPI}>Copy</button>
                     </li>
-                    <li><strong>Last Date to Pay:</strong> 20 June 2025 (by 11:59 PM)</li>
+                    <li><strong>Last Date to Pay:</strong> 19 June 2025 (by 11:59 PM)</li>
                 </ul>
 
                 <div className="upi-buttons">
                     <h4>Pay Using:</h4>
                     <div className="upi-apps">
-                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
-                            <img src={gpayIcon} alt="Google Pay" />
-                        </a>
-                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
-                            <img src={phonepeIcon} alt="PhonePe" />
-                        </a>
-                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
-                            <img src={paytmIcon} alt="Paytm" />
-                        </a>
+                        {[gpayIcon, phonepeIcon, paytmIcon].map((icon, index) => (
+                            <button className="upi-button" onClick={handleUPIClick} key={index}>
+                                <img src={icon} alt="UPI App" />
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
 
             <div className="payment-section">
                 <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION</h3>
-                <p>Send the screenshot + following details via <strong>WhatsApp or Instagram DM</strong>:</p>
-
                 <pre className="payment-format">
-Full Name: [Your Name]
-Registration Code: ONE11-2025-042
-Mobile Number: [Your Mobile]
-Category: {category}
-Transaction ID: [Your UPI/Transaction ID]
-Screenshot: [Attach Image]
+                    Full Name: [Your Name]{"\n"}
+                    Registration Code: ONE11-2025-042{"\n"}
+                    Mobile Number: [Your Mobile]{"\n"}
+                    Category: {category}{"\n"}
+                    Transaction ID: [Your UPI/Transaction ID]{"\n"}
+                    Screenshot: [Attach Image]
                 </pre>
-
-                <p>
-                    <strong>WhatsApp:</strong> +91-7477785294<br />
-                    <strong>Instagram:</strong> @theone11show
-                </p>
+                <p><strong>WhatsApp:</strong> +91-7277785294<br />
+                    <strong>Instagram:</strong> @theone11show</p>
             </div>
 
             <div className="payment-section">
@@ -103,12 +102,23 @@ Screenshot: [Attach Image]
 
             <div className="payment-section">
                 <h3 className="section-heading purple">NEED HELP?</h3>
-                <p>
-                    Call / WhatsApp: +91-7477785294<br />
+                <p>Call / WhatsApp: +91-7277785294<br />
                     Email: <a href="mailto:one11show@gmail.com">one11show@gmail.com</a><br />
-                    Instagram: @theone11show
-                </p>
+                    Instagram: @theone11show</p>
             </div>
+
+            {/* QR Modal */}
+            {showQR && (
+                <div className="qr-modal">
+                    <div className="qr-content">
+                        <h3>Scan to Pay</h3>
+                        <QRCode value={upiLink} size={180} />
+                        <p>{upiID}</p>
+                        <button className="copy-button" onClick={copyUPI}>Copy UPI ID</button>
+                        <button className="close-button" onClick={() => setShowQR(false)}>Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
