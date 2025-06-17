@@ -8,18 +8,32 @@ function InfoSection() {
     const navigate = useNavigate();
 
     const handleShowUpdates = () => {
-    navigate('/updates');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+        navigate('/updates');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
 
     return (
         <div className="info-section">
             <div className="info-card">
                 <h2 onClick={handleShowUpdates} style={{ cursor: 'pointer' }}>Show Updates</h2>
-                <p>
-                    Stay tuned here for announcements, schedule changes, artist lineups, and exclusive updates from The One11 Show. We'll keep this space fresh with the latest happenings!
-                </p>
+                <div className="notice-board">
+                    <h2 className="board-heading"> <span>| All Updates</span></h2>
+
+                    <div className="notice-card" onClick={handleShowUpdates}>
+                        <div className="notice-date-box">
+                            <span className="day">17</span>
+                            <span className="month">Jun</span>
+                            <span className="year">2025</span>
+                        </div>
+                        <div className="notice-content">
+                            <h3>Shortlisted Candidates for Round 1A Are Out!</h3>
+                            <button onClick={handleShowUpdates}>Click here</button>
+                            <p>...</p>
+                           
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="info-card">
