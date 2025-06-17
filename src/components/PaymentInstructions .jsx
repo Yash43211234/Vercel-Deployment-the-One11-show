@@ -85,14 +85,14 @@ const PaymentInstructions = () => {
       </div>
 
       <div className="payment-section">
-        <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION</h3>
+        <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION VIA WHATSAPP</h3>
         <pre className="payment-format">
 <strong>Full Name:</strong> [Your Name]{"\n"}
-<strong>Registration Code:</strong> ONE11-2025-042{"\n"}
+<strong>Stage Name:</strong>[Your Stage Name] {"\n"}
 <strong>Mobile Number:</strong> [Your Mobile]{"\n"}
 <strong>Category:</strong> {category}{"\n"}
 <strong>Transaction ID:</strong> [Your UPI/Transaction ID]{"\n"}
-<strong>Screenshot:</strong> [Attach Image]
+<strong>Screenshot:</strong> [Send Your Payment Screenshot]
         </pre>
 
         <p>
@@ -101,14 +101,7 @@ const PaymentInstructions = () => {
             +91-7277785294
           </a>
           <br />
-          <strong>Instagram:</strong>{" "}
-          <a
-            href="https://www.instagram.com/theone11.show?igsh=MTVvdTcwcTVvYnM2cw%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @theone11show
-          </a>
+         
         </p>
       </div>
 
@@ -116,9 +109,9 @@ const PaymentInstructions = () => {
         <h3 className="section-heading red">⚠ IMPORTANT NOTES:</h3>
         <ul>
           <li>Payments are <strong>non-refundable</strong>.</li>
-          <li><strong>Match your name and registration code</strong> with your previous entry.</li>
           <li>Wrong or missing details will <strong>not be accepted</strong>.</li>
-          <li>Confirmation is <strong>only after manual verification</strong>.</li>
+          <li>Confirmation is <strong>only after manual verification</strong>, Kindly be patient..</li>
+          <li>You will receive a payment confirmation shortly after completing the payment.</li>
         </ul>
       </div>
 
