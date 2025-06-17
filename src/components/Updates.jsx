@@ -12,19 +12,19 @@ const cardData = [
         title: 'Battle of Singers Song writers',
         description: 'Original voices and lyrical stories come alive as singer-songwriters.',
 
-        link: '/Results/musicians.png'
+        link: '/Results/signer_songwriters.png'
     },
     {
         title: 'Battle of Musicians',
         description: 'An epic competition where instrumentalists and solo artists push musical boundaries to win',
 
-        link: '/Results/rappers.jpg'
+        link: '/Results/musicians.png'
     },
     {
         title: 'Battle of Rappers',
         description: 'A soulful showcase of vocal talent, range, and expression from upcoming vocal powerhouses.',
 
-        link: '/Results/singer_songwriters.png'
+        link: '/Results/rappers.jpg'
     }
 
 ];
