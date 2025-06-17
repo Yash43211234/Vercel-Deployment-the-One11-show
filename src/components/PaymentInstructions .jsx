@@ -20,7 +20,7 @@ const PaymentInstructions = () => {
     "Battle of Musicians": 1199,
   };
 
-  const amount = categoryFees[category];
+  const amount = categoryFees[category] || 0;
   const upiID = "7811092672-1@okbizaxis";
   const upiLink = `upi://pay?pa=${upiID}&pn=theOne11%20show&am=${amount}&cu=INR&tn=${encodeURIComponent(`${category} Registration`)}`;
 
@@ -50,7 +50,7 @@ const PaymentInstructions = () => {
         <h3 className="section-heading blue">STEP 1: PAY YOUR REGISTRATION FEE</h3>
         <ul>
           <li><strong>Selected Category:</strong> {category}</li>
-          <li><strong>Amount:</strong> ₹{amount.toLocaleString()}</li>
+          <li><strong>Amount:</strong> ₹{amount ? amount.toLocaleString() : 'N/A'}</li>
           <li>
             <strong>UPI ID:</strong>{" "}
             <code onClick={copyUPI} className="upi-code">{upiID}</code>{" "}
