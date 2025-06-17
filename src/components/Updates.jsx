@@ -10,7 +10,7 @@ const cardData = [
     },
     {
         title: 'Battle of Singers Song writers',
-        description: 'Original voices and lyrical stories come alive as singer-songwriters compete with creativity.',
+        description: 'Original voices and lyrical stories come alive as singer-songwriters.',
 
         link: '/Results/musicians.png'
     },
