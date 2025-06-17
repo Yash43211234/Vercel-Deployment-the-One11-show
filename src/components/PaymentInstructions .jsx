@@ -15,13 +15,21 @@ const PaymentInstructions = () => {
     };
 
     const amount = categoryFees[category];
-    const upiLink = `upi://pay?pa=one11show@oksbi&pn=One11%20Show&am=${amount}&cu=INR&tn=${encodeURIComponent(
-        category + " Registration"
-    )}`;
+    const upiID = "one11show@oksbi";
+    const upiLink = `upi://pay?pa=${upiID}&pn=One11%20Show&am=${amount}&cu=INR&tn=${encodeURIComponent(`${category} Registration`)}`;
 
-    const copyUPI = () => {
-        navigator.clipboard.writeText("one11show@oksbi");
-        alert("UPI ID copied to clipboard!");
+    const copyUPI = async () => {
+        try {
+            await navigator.clipboard.writeText(upiID);
+            // non-blocking UX
+            const copiedAlert = document.createElement("div");
+            copiedAlert.innerText = "UPI ID copied!";
+            copiedAlert.className = "copy-toast";
+            document.body.appendChild(copiedAlert);
+            setTimeout(() => document.body.removeChild(copiedAlert), 1500);
+        } catch (err) {
+            alert("Failed to copy UPI ID.");
+        }
     };
 
     return (
@@ -31,20 +39,18 @@ const PaymentInstructions = () => {
             </h2>
 
             <div className="payment-section">
-                <h3 className="section-heading green"> IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
+                <h3 className="section-heading green">IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
                 <p>To confirm your entry, follow these 3 simple steps:</p>
             </div>
 
-            
-
             <div className="payment-section">
-                <h3 className="section-heading blue"> STEP 1: PAY YOUR REGISTRATION FEE</h3>
+                <h3 className="section-heading blue">STEP 1: PAY YOUR REGISTRATION FEE</h3>
                 <ul>
                     <li><strong>Selected Category:</strong> {category}</li>
                     <li><strong>Amount:</strong> ₹{amount.toLocaleString()}</li>
                     <li>
                         <strong>UPI ID:</strong>{" "}
-                        <code onClick={copyUPI} className="upi-code">one11show@oksbi</code>{" "}
+                        <code onClick={copyUPI} className="upi-code">{upiID}</code>{" "}
                         <button className="copy-button" onClick={copyUPI}>Copy</button>
                     </li>
                     <li><strong>Last Date to Pay:</strong> 20 June 2025 (by 11:59 PM)</li>
@@ -53,32 +59,30 @@ const PaymentInstructions = () => {
                 <div className="upi-buttons">
                     <h4>Pay Using:</h4>
                     <div className="upi-apps">
-                        <a href={upiLink} className="upi-button">
+                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
                             <img src={gpayIcon} alt="Google Pay" />
                         </a>
-                        <a href={upiLink} className="upi-button">
+                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
                             <img src={phonepeIcon} alt="PhonePe" />
                         </a>
-                        <a href={upiLink} className="upi-button">
+                        <a href={upiLink} className="upi-button" target="_blank" rel="noopener noreferrer">
                             <img src={paytmIcon} alt="Paytm" />
                         </a>
                     </div>
                 </div>
             </div>
 
-
-
             <div className="payment-section">
-                <h3 className="section-heading blue"> STEP 2: SEND US THE CONFIRMATION</h3>
+                <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION</h3>
                 <p>Send the screenshot + following details via <strong>WhatsApp or Instagram DM</strong>:</p>
 
                 <pre className="payment-format">
-                    Full Name: [Your Name]
-                    Registration Code: ONE11-2025-042
-                    Mobile Number: [Your Mobile]
-                    Category: {category}
-                    Transaction ID: [Your UPI/Transaction ID]
-                    Screenshot: [Attach Image]
+Full Name: [Your Name]
+Registration Code: ONE11-2025-042
+Mobile Number: [Your Mobile]
+Category: {category}
+Transaction ID: [Your UPI/Transaction ID]
+Screenshot: [Attach Image]
                 </pre>
 
                 <p>
@@ -98,7 +102,7 @@ const PaymentInstructions = () => {
             </div>
 
             <div className="payment-section">
-                <h3 className="section-heading purple"> NEED HELP?</h3>
+                <h3 className="section-heading purple">NEED HELP?</h3>
                 <p>
                     Call / WhatsApp: +91-7477785294<br />
                     Email: <a href="mailto:one11show@gmail.com">one11show@gmail.com</a><br />
