@@ -8,10 +8,7 @@ import { QRCode } from "react-qrcode-logo";
 
 const PaymentInstructions = () => {
   const location = useLocation();
-  const passedCategory = location.state?.category || "Battle of Rappers";
-
-  const [category] = useState(passedCategory);
-  const [showQR, setShowQR] = useState(false);
+  const passedCategory = location.state?.category;
 
   const categoryFees = {
     "Battle of Bands": 4999,
@@ -20,9 +17,25 @@ const PaymentInstructions = () => {
     "Battle of Musicians": 1199,
   };
 
-  const amount = categoryFees[category] || 0;
+  // Fallback to default if category is invalid
+  const [category] = useState(
+    passedCategory && categoryFees[passedCategory]
+      ? passedCategory
+      : "Battle of Singer-Songwriters"
+  );
+
+  const [showQR, setShowQR] = useState(false);
+
+  const amount = categoryFees[category];
   const upiID = "7811092672-1@okbizaxis";
-  const upiLink = `upi://pay?pa=${upiID}&pn=theOne11%20show&am=${amount}&cu=INR&tn=${encodeURIComponent(`${category} Registration`)}`;
+
+  // Clean transaction note (removes special characters like hyphen)
+  const cleanNote = category.replace(/[^a-zA-Z0-9 ]/g, "") + " Registration";
+
+  // UPI link for mobile apps
+  const upiLink = `upi://pay?pa=${upiID}&pn=theOne11show&am=${amount}&cu=INR&tn=${encodeURIComponent(
+    cleanNote
+  )}`;
 
   const copyUPI = () => {
     navigator.clipboard.writeText(upiID);
@@ -31,9 +44,9 @@ const PaymentInstructions = () => {
 
   const handleUPIClick = () => {
     if (window.innerWidth > 768) {
-      setShowQR(true); // show popup on desktop
+      setShowQR(true); // Show QR modal on desktop
     } else {
-      window.location.href = upiLink; // mobile - direct UPI call
+      window.location.href = upiLink; // Redirect on mobile
     }
   };
 
@@ -50,7 +63,7 @@ const PaymentInstructions = () => {
         <h3 className="section-heading blue">STEP 1: PAY YOUR REGISTRATION FEE</h3>
         <ul>
           <li><strong>Selected Category:</strong> {category}</li>
-          <li><strong>Amount:</strong> ₹{amount ? amount.toLocaleString() : 'N/A'}</li>
+          <li><strong>Amount:</strong> ₹{amount.toLocaleString()}</li>
           <li>
             <strong>UPI ID:</strong>{" "}
             <code onClick={copyUPI} className="upi-code">{upiID}</code>{" "}
@@ -89,7 +102,11 @@ const PaymentInstructions = () => {
           </a>
           <br />
           <strong>Instagram:</strong>{" "}
-          <a href="https://www.instagram.com/theone11.show?igsh=MTVvdTcwcTVvYnM2cw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/theone11.show?igsh=MTVvdTcwcTVvYnM2cw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             @theone11show
           </a>
         </p>
