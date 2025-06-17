@@ -18,7 +18,7 @@ const cardData = [
         title: 'Battle of Musicians',
         description: 'An epic competition where instrumentalists and solo artists push musical boundaries to win',
 
-        link: '/Results/rappers.png'
+        link: '/Results/rappers.jpg'
     },
     {
         title: 'Battle of Rappers',
@@ -32,10 +32,10 @@ const cardData = [
 const Updates = () => {
     const [popupImage, setPopupImage] = useState(null);
     const navigate = useNavigate();
-    
+
 
     return (
-          <div>
+        <div>
             <h1 style={styles.heading}>
                 Shortlisted Candidates for Round 1A Are Out!
             </h1>
@@ -53,15 +53,21 @@ const Updates = () => {
                             >
                                 View
                             </button>
-
                             <button
                                 style={styles.button}
                                 onClick={() => {
-                                    window.scrollTo({ top: 500, behavior: 'smooth' });
-                                    navigate('/payment-instructions')}}
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    setTimeout(() => {
+                                        navigate('/payment-instructions', {
+                                            state: { category: card.title }
+                                        });
+                                    }, 200);
+                                }}
                             >
                                 Proceed
                             </button>
+
+
                         </div>
                     </div>
                 ))}
@@ -92,8 +98,8 @@ const styles = {
         padding: '40px',
         backgroundColor: '#f5f5f5',
     },
-    heading:{
-            textAlign:'center'
+    heading: {
+        textAlign: 'center'
     },
     card: {
         width: '340px',
