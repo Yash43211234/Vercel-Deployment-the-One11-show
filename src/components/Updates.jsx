@@ -56,13 +56,18 @@ const Updates = () => {
                             <button
                                 style={styles.button}
                                 onClick={() => {
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    const isMobile = window.innerWidth <= 768; // You can adjust this breakpoint as needed
+                                    const scrollTop = isMobile ? 700 : 100;
+
+                                    window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+
                                     setTimeout(() => {
                                         navigate('/payment-instructions', {
                                             state: { category: card.title }
                                         });
                                     }, 200);
                                 }}
+
                             >
                                 Proceed
                             </button>
