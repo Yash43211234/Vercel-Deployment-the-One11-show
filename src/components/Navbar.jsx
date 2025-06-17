@@ -7,7 +7,7 @@ function Navbar() {
 
   const handleShowUpdates = () => {
     navigate('/updates');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 500, behavior: 'smooth' });
   };
 
   return (
@@ -33,7 +33,7 @@ function Navbar() {
               Register
             </Link>
             <Link to="/about#team" className="bn">About</Link>
-            <Link to="/updates" className="bn">Updates</Link>
+            <Link to="/updates"   onClick={handleShowUpdates}  className="bn">Updates</Link>
           </div>
 
           <h2 

@@ -6,7 +6,7 @@ const cardData = [
         title: 'Battle of Bands',
         description: 'A thrilling face-off between top bands showcasing their musical synergy, energy, and performance skills.',
 
-        link: '/Results/bands.png'
+        link: '/Results/bands.jpg'
     },
     {
         title: 'Battle of Singers Song writers',
@@ -16,13 +16,13 @@ const cardData = [
     },
     {
         title: 'Battle of Musicians',
-        description: 'An epic competition where instrumentalists and solo artists push musical boundaries to win the crown.',
+        description: 'An epic competition where instrumentalists and solo artists push musical boundaries to win',
 
         link: '/Results/rappers.png'
     },
     {
         title: 'Battle of Rappers',
-        description: 'A soulful showcase of vocal talent, range, control, and expression from upcoming vocal powerhouses.',
+        description: 'A soulful showcase of vocal talent, range, and expression from upcoming vocal powerhouses.',
 
         link: '/Results/singer_songwriters.png'
     }
@@ -56,7 +56,9 @@ const Updates = () => {
 
                             <button
                                 style={styles.button}
-                                onClick={() => navigate('/payment-instructions')}
+                                onClick={() => {
+                                    window.scrollTo({ top: 500, behavior: 'smooth' });
+                                    navigate('/payment-instructions')}}
                             >
                                 Proceed
                             </button>
@@ -89,6 +91,9 @@ const styles = {
         gap: '30px',
         padding: '40px',
         backgroundColor: '#f5f5f5',
+    },
+    heading:{
+            textAlign:'center'
     },
     card: {
         width: '340px',

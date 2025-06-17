@@ -38,7 +38,7 @@ const PaymentInstructions = () => {
             <h2 className="payment-title">THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS</h2>
 
             <div className="payment-section">
-                <h3 className="section-heading green">IF YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
+                <h3 className="section-heading green">CONGRATULATIONS!  YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
                 <p>To confirm your entry, follow the steps below:</p>
             </div>
 
@@ -79,15 +79,28 @@ const PaymentInstructions = () => {
             <div className="payment-section">
                 <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION</h3>
                 <pre className="payment-format">
-                    Full Name: [Your Name]{"\n"}
-                    Registration Code: ONE11-2025-042{"\n"}
-                    Mobile Number: [Your Mobile]{"\n"}
-                    Category: {category}{"\n"}
-                    Transaction ID: [Your UPI/Transaction ID]{"\n"}
-                    Screenshot: [Attach Image]
+                   <pre className="payment-format">
+<strong>Full Name:</strong> [Your Name]{"\n"}
+<strong>Registration Code:</strong> ONE11-2025-042{"\n"}
+<strong>Mobile Number:</strong> [Your Mobile]{"\n"}
+<strong>Category:</strong> {category}{"\n"}
+<strong>Transaction ID:</strong> [Your UPI/Transaction ID]{"\n"}
+<strong>Screenshot:</strong> [Attach Image]
+</pre>
+
                 </pre>
-                <p><strong>WhatsApp:</strong> +91-7277785294<br />
-                    <strong>Instagram:</strong> @theone11show</p>
+                <p>
+  <strong>WhatsApp:</strong>{" "}
+  <a href="https://wa.me/917277785294" target="_blank" rel="noopener noreferrer">
+    +91-7277785294
+  </a>
+  <br />
+  <strong>Instagram:</strong>{" "}
+  <a href="https://www.instagram.com/theone11.show?igsh=MTVvdTcwcTVvYnM2cw%3D%3D" target="_blank" rel="noopener noreferrer">
+    @theone11show
+  </a>
+</p>
+
             </div>
 
             <div className="payment-section">
