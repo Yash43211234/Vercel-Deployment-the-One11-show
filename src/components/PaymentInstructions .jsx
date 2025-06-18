@@ -120,7 +120,7 @@ const PaymentInstructions = () => {
           <li>Wrong or missing details will <strong>not be accepted</strong>.</li>
           <li>Confirmation is <strong>only after manual verification</strong>. Kindly be patient.</li>
           <li>You will receive a payment confirmation shortly after completing the payment.</li>
-          <li>Late submission fee for this category: ₹{lateFee}</li>
+          <li>Late submission of your fees will incur fine i.e,. Rs {lateFee}</li>
         </ul>
       </div>
 
