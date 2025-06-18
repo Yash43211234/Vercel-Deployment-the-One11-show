@@ -98,7 +98,7 @@ const PaymentInstructions = () => {
         <p>
           <strong>WhatsApp:</strong>{" "}
           <a href="https://wa.me/917277785294" target="_blank" rel="noopener noreferrer">
-            +91-7277785294
+            +91-7477785294
           </a>
           <br />
          
@@ -118,9 +118,9 @@ const PaymentInstructions = () => {
       <div className="payment-section">
         <h3 className="section-heading purple">NEED HELP?</h3>
         <p>
-          Call / WhatsApp: +91-7277785294<br />
-          Email: <a href="mailto:one11show@gmail.com">one11show@gmail.com</a><br />
-          Instagram: @theone11show
+          Call / WhatsApp: +91-7477785294<br />
+          Email: <a href="mailto:one11show@gmail.com">team@theone11.show</a><br />
+          Instagram: @theone11.show
         </p>
       </div>
 
