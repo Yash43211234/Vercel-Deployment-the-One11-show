@@ -11,13 +11,24 @@ const PaymentInstructions = () => {
   const passedCategory = location.state?.category;
 
   const categoryFees = {
-    "Battle of Bands": 4999,
-    "Battle of Rappers": 1199,
-    "Battle of Singer-Songwriters": 1999,
-    "Battle of Musicians": 1199,
+    "Battle of Bands": {
+      registration: 4999,
+      lateFee: 1000,
+    },
+    "Battle of Rappers": {
+      registration: 1199,
+      lateFee: 500,
+    },
+    "Battle of Singer-Songwriters": {
+      registration: 1999,
+      lateFee: 500,
+    },
+    "Battle of Musicians": {
+      registration: 1199,
+      lateFee: 500,
+    },
   };
 
-  // Fallback to default if category is invalid
   const [category] = useState(
     passedCategory && categoryFees[passedCategory]
       ? passedCategory
@@ -26,14 +37,13 @@ const PaymentInstructions = () => {
 
   const [showQR, setShowQR] = useState(false);
 
-  const amount = categoryFees[category];
+  const { registration, lateFee } = categoryFees[category];
   const upiID = "7811092672-1@okbizaxis";
 
-  // Clean transaction note (removes special characters like hyphen)
-  const cleanNote = category.replace(/[^a-zA-Z0-9 ]/g, "") + " Registration";
+  const cleanNote =
+    category.replace(/[^a-zA-Z0-9 ]/g, "") + " Registration";
 
-  // UPI link for mobile apps
-  const upiLink = `upi://pay?pa=${upiID}&pn=theOne11show&am=${amount}&cu=INR&tn=${encodeURIComponent(
+  const upiLink = `upi://pay?pa=${upiID}&pn=theOne11show&am=${registration}&cu=INR&tn=${encodeURIComponent(
     cleanNote
   )}`;
 
@@ -44,9 +54,9 @@ const PaymentInstructions = () => {
 
   const handleUPIClick = () => {
     if (window.innerWidth > 768) {
-      setShowQR(true); // Show QR modal on desktop
+      setShowQR(true);
     } else {
-      window.location.href = upiLink; // Redirect on mobile
+      window.location.href = upiLink;
     }
   };
 
@@ -55,7 +65,9 @@ const PaymentInstructions = () => {
       <h2 className="payment-title">THE ONE11 SHOW – NEXT ROUND REGISTRATION INSTRUCTIONS</h2>
 
       <div className="payment-section">
-        <h3 className="section-heading green">CONGRATULATIONS! YOU’RE SELECTED FOR THE NEXT ROUND!</h3>
+        <h3 className="section-heading green">
+          CONGRATULATIONS! YOU’RE SELECTED FOR THE NEXT ROUND!
+        </h3>
         <p>To confirm your entry, follow the steps below:</p>
       </div>
 
@@ -63,13 +75,12 @@ const PaymentInstructions = () => {
         <h3 className="section-heading blue">STEP 1: PAY YOUR REGISTRATION FEE</h3>
         <ul>
           <li><strong>Selected Category:</strong> {category}</li>
-          <li><strong>Amount:</strong> ₹{amount.toLocaleString()}</li>
+          <li><strong>Amount:</strong> ₹{registration.toLocaleString()}</li>
           <li>
             <strong>UPI ID:</strong>{" "}
             <code onClick={copyUPI} className="upi-code">{upiID}</code>{" "}
             <button className="copy-button" onClick={copyUPI}>Copy</button>
           </li>
-          <li><strong>Last Date to Pay:</strong> 19 June 2025 (by 11:59 PM)</li>
         </ul>
 
         <div className="upi-buttons">
@@ -88,20 +99,17 @@ const PaymentInstructions = () => {
         <h3 className="section-heading blue">STEP 2: SEND US THE CONFIRMATION VIA WHATSAPP</h3>
         <pre className="payment-format">
 <strong>Full Name:</strong> [Your Name]{"\n"}
-<strong>Stage Name:</strong>[Your Stage Name] {"\n"}
+<strong>Stage Name:</strong> [Your Stage Name]{"\n"}
 <strong>Mobile Number:</strong> [Your Mobile]{"\n"}
 <strong>Category:</strong> {category}{"\n"}
 <strong>Transaction ID:</strong> [Your UPI/Transaction ID]{"\n"}
 <strong>Screenshot:</strong> [Send Your Payment Screenshot]
         </pre>
-
         <p>
           <strong>WhatsApp:</strong>{" "}
           <a href="https://wa.me/917277785294" target="_blank" rel="noopener noreferrer">
             +91-7477785294
           </a>
-          <br />
-         
         </p>
       </div>
 
@@ -110,8 +118,9 @@ const PaymentInstructions = () => {
         <ul>
           <li>Payments are <strong>non-refundable</strong>.</li>
           <li>Wrong or missing details will <strong>not be accepted</strong>.</li>
-          <li>Confirmation is <strong>only after manual verification</strong>, Kindly be patient..</li>
-          <li>You will receive a payment confirmation shortly after completing the payment.</li>
+          <li>Confirmation is <strong>only after manual verification</strong>. Kindly be patient.</li>
+          <li>You will receive a payment confirmation shortly after completing the payment.</li>
+          <li>Late submission fee for this category: ₹{lateFee}</li>
         </ul>
       </div>
 
