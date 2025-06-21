@@ -12,19 +12,19 @@ const PaymentInstructions = () => {
 
   const categoryFees = {
     "Battle of Bands": {
-      registration: 4999,
+      registration: 5999,
       lateFee: 1000,
     },
     "Battle of Rappers": {
-      registration: 1199,
+      registration: 1699,
       lateFee: 500,
     },
     "Battle of Singer-Songwriters": {
-      registration: 1999,
+      registration: 2499,
       lateFee: 500,
     },
     "Battle of Musicians": {
-      registration: 1199,
+      registration: 1699,
       lateFee: 500,
     },
   };
@@ -120,6 +120,7 @@ const PaymentInstructions = () => {
           <li>Wrong or missing details will <strong>not be accepted</strong>.</li>
           <li>Confirmation is <strong>only after manual verification</strong>. Kindly be patient.</li>
           <li>You will receive a payment confirmation shortly after completing the payment.</li>
+          <li>The last date to register will be 20 June</li>
           <li>Late submission of your fees will incur fine i.e,. Rs {lateFee}</li>
         </ul>
       </div>
