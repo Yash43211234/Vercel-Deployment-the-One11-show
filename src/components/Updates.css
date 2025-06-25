@@ -1,0 +1,303 @@
+/* Updates.css */
+
+/* --- CSS Variables for consistency --- */
+:root {
+    --primary-blue: #007bff;
+    --primary-dark: #343a40;
+    --accent-red: #dc3545;
+    --text-light: #f8f9fa;
+    --text-dark: #212529;
+    --card-bg: #ffffff;
+    --body-bg: #f0f2f5;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --transition-ease: all 0.3s ease-in-out;
+    --border-radius-lg: 12px;
+    --font-heading: 'Poppins', sans-serif; /* Modern sans-serif for headings */
+    --font-body: 'Roboto', sans-serif;    /* Clean sans-serif for body text */
+}
+
+/* Base Body Styles */
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bg);
+    color: var(--text-dark);
+}
+
+/* Main Heading */
+.updates-heading {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--primary-dark);
+    margin: 60px 20px 40px;
+    position: relative;
+    padding-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.updates-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+}
+
+/* Container for Cards */
+.updates-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px; /* Space between cards */
+    padding: 20px 40px 60px; /* Adjusted padding for top and bottom */
+}
+
+/* Individual Card Styles */
+.update-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px var(--shadow-light); /* Softer, larger shadow */
+    transition: var(--transition-ease);
+    display: flex;
+    flex-direction: column;
+    width: 360px; /* Slightly wider cards */
+    min-height: 320px; /* Consistent height for better alignment */
+    overflow: hidden; /* Ensures border-radius applies to everything */
+}
+
+.update-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 15px 40px var(--shadow-medium); /* More intense shadow on hover */
+}
+
+/* Card Content Area */
+.card-content {
+    padding: 25px; /* More padding inside content */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows content to take available space */
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem; /* Larger title */
+    font-weight: 700;
+    margin: 0 0 12px; /* Adjusted margin */
+    color: var(--primary-dark);
+    line-height: 1.3;
+}
+
+.card-description {
+    font-family: var(--font-body);
+    font-size: 1.05rem; /* Slightly larger description font */
+    color: #555;
+    margin-bottom: 25px; /* More space before buttons */
+    line-height: 1.6;
+    flex-grow: 1; /* Allows description to take available height */
+}
+
+/* Button Group */
+.card-buttons {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    margin-top: auto; /* Pushes buttons to the bottom */
+}
+
+.card-button {
+    flex: 1; /* Makes buttons take equal width */
+    padding: 12px 20px; /* More padding for buttons */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded buttons */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition-ease);
+    text-align: center;
+}
+
+.card-button.view-button {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+}
+
+.card-button.view-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.card-button.proceed-button {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+.card-button.proceed-button:hover {
+    background-color: #23272b; /* Darker grey on hover */
+    box-shadow: 0 4px 10px rgba(52, 58, 64, 0.3);
+}
+
+/* Modal Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Blurred background effect */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content {
+    position: relative;
+    background-color: var(--card-bg);
+    padding: 25px; /* More padding */
+    border-radius: var(--border-radius-lg);
+    max-width: 90%;
+    max-height: 90vh; /* Use viewport height for better responsiveness */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease-out;
+}
+
+.popup-image {
+    max-width: 100%;
+    max-height: 75vh; /* Allows space for buttons and close button */
+    display: block;
+    margin: 0 auto 20px; /* Space below image */
+    object-fit: contain; /* Ensures image fits without cropping */
+    border-radius: 8px; /* Slight roundness for image */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px; /* Larger close button */
+    background: transparent;
+    border: none;
+    color: var(--primary-dark); /* Dark color for visibility */
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s ease-out;
+}
+
+.close-button:hover {
+    transform: rotate(90deg); /* Spin effect on close */
+    color: var(--accent-red);
+}
+
+.download-button {
+    display: block; /* Make it a block element to center easily */
+    width: fit-content; /* Fit content width */
+    margin: 0 auto; /* Center the button */
+    padding: 12px 25px;
+    background-color: #28a745; /* Green for download */
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition-ease);
+}
+
+.download-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .updates-heading {
+        font-size: 2.2rem;
+        margin: 50px 15px 30px;
+    }
+    .update-card {
+        width: 320px; /* Slightly smaller cards */
+    }
+    .card-title {
+        font-size: 1.6rem;
+    }
+    .card-description {
+        font-size: 1rem;
+    }
+    .updates-container {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .updates-heading {
+        font-size: 2rem;
+        margin: 40px 10px 25px;
+    }
+    .update-card {
+        width: 100%; /* Full width on small screens */
+        max-width: 350px; /* Max width to prevent overly wide cards on tablets */
+    }
+    .card-content {
+        padding: 20px;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+    .card-description {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+    .updates-container {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    .popup-content {
+        padding: 15px;
+    }
+    .popup-image {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .updates-heading {
+        font-size: 1.8rem;
+        margin: 30px 10px 20px;
+    }
+    .update-card {
+        min-height: unset; /* Allow height to adjust to content */
+    }
+    .card-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+    .card-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .close-button {
+        font-size: 28px;
+        top: 8px;
+        right: 12px;
+    }
+}

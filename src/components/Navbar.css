@@ -1,90 +1,382 @@
-.button-bar {
+/* --- CSS Variables for easy customization --- */
+:root {
+  --primary-red: #e74c3c;
+  --primary-pink: #c0392b;
+  --accent-color: #3498db; /* Blue */
+  --text-light: #ecf0f1;
+  --text-dark: #2c3e50; /* Darker blue-grey */
+  --button-bg-light: rgba(255, 255, 255, 0.15);
+  --button-bg-hover: rgba(255, 255, 255, 0.3);
+  --shadow-color-dark: rgba(0, 0, 0, 0.25);
+  --shadow-color-light: rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+
+  /* Responsive Navbar Heights - INCREASED SIZING */
+  --navbar-height-desktop: 160px; /* Increased from 130px */
+  --navbar-height-tablet: 130px;  /* Increased from 110px */
+  --navbar-height-mobile-lg: 115px; /* Increased from 100px */
+  --navbar-height-mobile-md: 100px; /* Increased from 90px */
+  --navbar-height-mobile-sm: 90px;  /* Increased from 80px */
+}
+
+/* --- Base Body Styling (Keep these global, they are standard resets) --- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Ensure Poppins is imported in your index.html */
+  background-color: #f8f9fa; /* Default background for pages */
+  overflow-x: hidden; /* Prevents horizontal scroll from transitions/animations */
+}
+
+/* Ensure consistent box-sizing across all elements to prevent layout shifts */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ========================================================================= */
+/* --- Navbar Container (button-bar) - DESKTOP FIRST STYLES (High Specificity) --- */
+/* ========================================================================= */
+
+.navbar-container {
+  /* This outer div helps in scoping all inner Navbar styles */
+  width: 100%;
+
   
   top: 0;
-  z-index: 1000;
+
+  z-index: 1000000; /* Ensure Navbar stays on top of other content */
+}
+
+.navbar-container .button-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding:  20px;
-  background: linear-gradient(135deg, var(--primary-red), var(--primary-pink));
- 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  justify-content: space-between; /* Spreads logo, nav-content, right-space */
+  padding: 20px 50px; /* Generous padding for desktop */
+  height: var(--navbar-height-desktop); /* Now uses the increased variable */
+
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-pink), var(--accent-color));
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite alternate;
+
+  box-shadow: 0 6px 20px var(--shadow-color-dark);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Logo and buttons flex */
-.logo, .nav-buttons, .right-space {
-  flex: 1;
+/* Gradient Animation Keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.logo img {
-  height: 220px;
-  width: 220px;
+/* --- Logo --- */
+.navbar-container .logo {
+  flex-shrink: 0; /* Prevents logo from shrinking too much */
+}
+.navbar-container .logo img {
+  height: 190px; /* Larger desktop logo height */
+  width: auto; /* Maintain aspect ratio */
   object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-speed) ease;
+}
+.navbar-container .logo img:hover {
+  transform: scale(1.05);
 }
 
-/* Navigation buttons container */
-.nav-buttons {
+/* --- Hamburger Menu Icon - HIDDEN ON DESKTOP --- */
+.navbar-container .hamburger-menu {
+  display: none; /* Hidden by default (desktop) */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 35px; /* Slightly larger hamburger */
+  height: 30px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure hamburger is above other content */
+  margin-left: auto; /* Pushes to the right on mobile */
+}
+.navbar-container .hamburger-menu .bar {
+  width: 100%;
+  height: 4px; /* Thicker bars */
+  background-color: var(--text-light);
+  border-radius: 2px;
+  transition: all var(--transition-speed) ease;
+  transform-origin: left; /* For rotation effect */
+}
+/* Hamburger menu animation for opening/closing */
+.navbar-container .hamburger-menu .bar:nth-child(1).open { transform: rotate(45deg); }
+.navbar-container .hamburger-menu .bar:nth-child(2).open { opacity: 0; transform: translateX(15px); }
+.navbar-container .hamburger-menu .bar:nth-child(3).open { transform: rotate(-45deg); }
+
+
+/* --- Navigation Content - DESKTOP STYLES (High Specificity) --- */
+.navbar-container .nav-content {
+  display: flex; /* Displayed as flex for desktop layout */
+  flex-grow: 1; /* Allows it to take available space */
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container .nav-heading {
+  text-align: center;
+  color: var(--text-light);
+  width: 100%;
+}
+.navbar-container .nav-heading h1 {
+  font-size: 2.5em; /* Larger heading */
+  font-weight: 600;
+  margin: 0; /* Remove default margins */
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  color: var(--text-light); /* Ensure heading is light */
+}
+
+.navbar-container .buttton-link {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem; /* More space between desktop links */
+  flex-wrap: wrap; /* Allows links to wrap if screen is too narrow */
+  margin-top: 15px; /* More margin from heading */
+}
+.navbar-container .buttton-link .bn {
+  background-color: var(--button-bg-light);
+  color: var(--text-light);
+  padding: 0.9rem 2rem; /* Larger padding for buttons */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px; /* More rounded pill-like */
+  cursor: pointer;
+  font-weight: 500;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  text-decoration: none; /* Remove underline from links */
+  font-size: 1.05rem; /* Larger font size for links */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.navbar-container .buttton-link .bn:hover {
+  background-color: var(--button-bg-hover);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px var(--shadow-color-dark);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Empty div to balance right side */
+.navbar-container .selected-candidates-button {
+  text-align: center;
+  margin-top: 25px; /* More margin */
+  color: var(--text-light) !important; /* Use !important for crucial overrides if necessary */
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 12px !important; /* Slightly more rounded */
+  padding: 12px 25px !important; /* More padding */
+  font-size: 1.2em !important; /* Larger font */
+  cursor: pointer;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 10px var(--shadow-color-dark) !important;
+  transition: all var(--transition-speed) ease !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  max-width: 500px; /* Wider button */
+  margin-left: auto;
+  margin-right: auto; /* Center the button */
+}
+.navbar-container .selected-candidates-button:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 6px 15px var(--shadow-color-dark) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
 
-/* Media Query: for smaller screens, stack nav items vertically */
-@media (max-width: 600px) {
-  .button-bar {
+/* --- Right Space - DESKTOP ONLY --- */
+.navbar-container .right-space {
+  min-width: 100px; /* More balancing space for aesthetic symmetry */
+  flex-shrink: 0;
+}
+
+/* ========================================================================= */
+/* --- MEDIA QUERIES FOR RESPONSIVENESS (MOBILE LAST) --- */
+/* (All rules here also use .navbar-container for high specificity) */
+/* ========================================================================= */
+
+/* Adjustments for smaller desktops and tablets (max-width 1024px) */
+@media (max-width: 1024px) {
+  .navbar-container .button-bar {
+    padding: 20px 40px; /* Generous padding */
+  }
+  .navbar-container .nav-heading h1 {
+    font-size: 2.2em;
+  }
+  .navbar-container .buttton-link {
+    gap: 1.2rem;
+  }
+}
+
+/* Tablet Portrait and smaller (max-width 992px) */
+@media (max-width: 992px) {
+  .navbar-container .button-bar {
+    padding: 20px 30px; /* Generous padding */
+    height: var(--navbar-height-tablet); /* Use tablet height variable */
+    justify-content: space-between;
+    flex-wrap: nowrap; /* Prevent wrapping in the main bar */
+  }
+
+  .navbar-container .logo img {
+    height: 80px; /* Larger logo for tablets */
+  }
+
+  .navbar-container .hamburger-menu {
+    display: flex; /* Show hamburger menu */
+  }
+
+  .navbar-container .right-space {
+    display: none; /* Hide the right spacing div on mobile */
+  }
+
+  /* --- Mobile Navigation Content (Overlay) --- */
+  .navbar-container .nav-content {
+    display: none; /* Hidden by default when menu is closed */
     flex-direction: column;
-    padding: 1rem;
-  }
-  .logo, .nav-buttons, .right-space {
-    flex: none;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+
+    position: fixed; /* Fixed position to cover the screen */
+    top: var(--navbar-height-tablet); /* Position below adjusted navbar height */
+    left: 0;
     width: 100%;
-    text-align: center;
-    margin-bottom: 0.8rem;
+    height: calc(100vh - var(--navbar-height-tablet)); /* Full height below navbar */
+    background-color: rgba(44, 62, 80, 0.98); /* Slightly more opaque background */
+    backdrop-filter: blur(18px); /* Stronger blur effect */
+    -webkit-backdrop-filter: blur(18px);
+    padding: 40px; /* Much more padding inside mobile menu */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0;
+    visibility: hidden; /* Hidden from screen readers when closed */
+    transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out, visibility var(--transition-speed) ease-in-out;
+    overflow-y: auto; /* Allow scrolling if menu content is too long */
+    z-index: 999; /* Below the hamburger, above page content */
   }
-  .nav-buttons {
-    justify-content: center;
-    gap: 0.5rem;
+
+  .navbar-container .nav-content.open {
+    display: flex; /* Display when open */
+    transform: translateX(0); /* Slide into view */
+    opacity: 1;
+    visibility: visible; /* Make visible to screen readers */
+  }
+
+  .navbar-container .nav-heading {
+    margin-bottom: 40px; /* More margin below heading */
+  }
+  .navbar-container .nav-heading h1 {
+    font-size: 2.2em; /* Larger heading for mobile */
+    margin-bottom: 25px; /* More margin */
+  }
+
+  .navbar-container .buttton-link {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 25px; /* More gap between buttons */
+    margin-bottom: 40px; /* More margin below links */
+  }
+  .navbar-container .buttton-link .bn {
+    width: 100%;
+    max-width: 350px; /* Wider buttons */
+    font-size: 1.15rem; /* Larger font */
+    padding: 1.1rem 2.2rem; /* More padding */
+  }
+
+  .navbar-container .selected-candidates-button {
+    font-size: 1.15em !important; /* Larger font */
+    padding: 15px 30px !important; /* More padding */
+    max-width: 400px; /* Wider button */
   }
 }
 
-
-.nav-heading {
-    color:white
+/* Larger Phones (max-width 768px) */
+@media (max-width: 768px) {
+  .navbar-container .button-bar {
+    height: var(--navbar-height-mobile-lg); /* Use larger phone height variable */
+    padding: 18px 25px; /* Generous padding */
+  }
+  .navbar-container .logo img {
+    height: 70px; /* Consistent larger logo */
+  }
+  .navbar-container .hamburger-menu {
+    width: 32px;
+    height: 28px;
+  }
+  .navbar-container .nav-content {
+    top: var(--navbar-height-mobile-lg);
+    height: calc(100vh - var(--navbar-height-mobile-lg));
+  }
+  .navbar-container .nav-heading h1 {
+    font-size: 2em;
+  }
+  .navbar-container .buttton-link .bn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+  .navbar-container .selected-candidates-button {
+    font-size: 1.1em !important;
+    padding: 13px 28px !important;
+  }
 }
 
-
-.buttton-link {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+/* Medium Phones (max-width 576px) */
+@media (max-width: 576px) {
+  .navbar-container .button-bar {
+    padding: 15px 20px; /* Adjusted padding */
+    height: var(--navbar-height-mobile-md); /* Use medium phone height variable */
+  }
+  .navbar-container .logo img {
+    height: 60px; /* Adjusted logo size */
+  }
+  .navbar-container .nav-heading h1 {
+    font-size: 1.8em;
+  }
+  .navbar-container .nav-content {
+    top: var(--navbar-height-mobile-md);
+    height: calc(100vh - var(--navbar-height-mobile-md));
+  }
+  .navbar-container .buttton-link .bn {
+    font-size: 1.05rem;
+    padding: 0.9rem 1.8rem;
+    max-width: 300px; /* Slightly narrower for smaller screens */
+  }
+  .navbar-container .selected-candidates-button {
+    font-size: 1.05em !important;
+    padding: 12px 25px !important;
+    max-width: 350px;
+  }
 }
 
-.buttton-link .bn {
-  background-color: rgb(127, 91, 91);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  margin-top: 10px;
-}
-
-.buttton-link .bn:hover {
-  background-color: rgb(214, 144, 144);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease, color 0.3s ease;
-  text-decoration: none;
-  margin-top: 10px;
+/* Small Phones (max-width 400px) */
+@media (max-width: 400px) {
+    .navbar-container .button-bar {
+        padding: 12px 15px; /* Adjusted padding */
+        height: var(--navbar-height-mobile-sm); /* Use small phone height variable */
+    }
+    .navbar-container .logo img {
+        height: 50px; /* Adjusted logo size */
+    }
+    .navbar-container .hamburger-menu {
+        width: 28px;
+        height: 23px;
+    }
+    .navbar-container .nav-heading h1 {
+        font-size: 1.5em;
+    }
+    .navbar-container .buttton-link {
+        gap: 20px; /* Adjusted gap */
+    }
+    .navbar-container .buttton-link .bn {
+        font-size: 1rem;
+        padding: 0.8rem 1.6rem;
+        max-width: 250px; /* Narrower for very small screens */
+    }
+    .navbar-container .selected-candidates-button {
+        font-size: 1em !important;
+        padding: 10px 20px !important;
+        max-width: 300px;
+    }
 }
